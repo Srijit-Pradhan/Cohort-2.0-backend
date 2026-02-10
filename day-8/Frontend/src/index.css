@@ -17,11 +17,19 @@ html{
   border-radius: 0.7rem;
   max-width: 20rem;
   color: white;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .notes{
   display: flex;
   gap: 1rem;
   padding-block: 1rem;
   padding-inline: 1rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+}
+form{
+  display: flex;
+  gap: 1rem;
+  padding-inline: 3rem;
+  padding-block: 1rem;
 }
