@@ -6,7 +6,7 @@ const App = () => {
   const [notes, setNotes] = useState([]);
 
   function fetchNotes() {
-    axios.get("http://localhost:3000/api/notes").then((res) => {
+    axios.get("https://cohort-2-0-backend-4wnl.onrender.com/api/notes").then((res) => {
       setNotes(res.data.notes);
     });
   }
@@ -19,7 +19,7 @@ const App = () => {
     e.preventDefault();
     const { title, description } = e.target.elements;
     axios
-      .post("http://localhost:3000/api/notes", {
+      .post("https://cohort-2-0-backend-4wnl.onrender.com/api/notes", {
         title: title.value,
         description: description.value,
       })
@@ -31,7 +31,7 @@ const App = () => {
   }
 
   function deleteHandler(noteid) {
-    axios.delete("http://localhost:3000/api/notes/" + noteid).then((res) => {
+    axios.delete("https://cohort-2-0-backend-4wnl.onrender.com/api/notes/" + noteid).then((res) => {
       // console.log(res.data);
       fetchNotes();
     });
@@ -42,7 +42,7 @@ const App = () => {
     const newDescription = prompt("Enter new description", oldDescription);
 
     axios
-      .patch("http://localhost:3000/api/notes/" + noteid, {
+      .patch("https://cohort-2-0-backend-4wnl.onrender.com/api/notes/" + noteid, {
         title: newTitle,
         description: newDescription,
       })
