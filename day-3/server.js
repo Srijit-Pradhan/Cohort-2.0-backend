@@ -1,24 +1,23 @@
-const express = require("express");
+const express = require("express")
 
-const app = express();
+const app = express()
+app.use(express.json())
 
+const notes = []
 
-app.use(express.json()); // Middleware to parse JSON bodies
+app.post("/notes", (req, res) => {
+    console.log(req.body)
 
-const notes = [];
+    notes.push(req.body)
 
-app.post("/notes",(req, res) => {
-    console.log(req.body);
-
-    notes.push(req.body);
-    
-    res.send("Note created");
+    res.send("note created")
 })
 
 app.get("/notes", (req, res) => {
-    res.send(notes);
-});
+    res.send(notes)
+})
+
 
 app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+    console.log("Server is running  on port 3000")
+})

@@ -1,7 +1,7 @@
-const catMe = require("cat-me");
-console.log(catMe());
+const express = require("express")
 
-//first cat-me install by npm i cat-me
-//then require it in app.js
-//store it in a variable
-//finally log the variable to the console
+
+const app = express() // server create kr chuke ho
+
+
+app.listen(3000) // server ko start krta hai

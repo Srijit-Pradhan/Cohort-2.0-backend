@@ -1,19 +1,43 @@
-const express = require("express");
-const noteModel = require("./models/notes.model");
+/**
+ * server ko create krna
+ */
 
-const app = express();
-app.use(express.json());
+const express = require("express")
+const noteModel = require("./models/notes.model")
 
+
+const app = express()
+
+app.use(express.json())
+/**
+ * - POST /notes
+ * - req.body => {title,description}
+ */
 app.post("/notes", async (req, res) => {
-  const { title, description } = req.body;
+    const { title, description, age } = req.body
 
-  const Note = await noteModel.create({ title, description });
-  res.status(201).json({ message: "Note created successfully", note: Note });
-});
+    const note = await noteModel.create({
+        title, description
+    })
 
+    res.status(201).json({
+        message: "Note created successfully",
+        note
+    })
+})
+
+/**
+ * - GET /notes
+ * - fetch all the notes Data
+ */
 app.get("/notes", async (req, res) => {
-  const notes = await noteModel.find();
-  res.status(200).json({ message: "Notes retrieved successfully", notes });
-});
+    const notes = await noteModel.find()
 
-module.exports = app;
+    res.status(200).json({
+        message: "Notes fetched successfully",
+        notes
+    })
+})
+
+
+module.exports = app
